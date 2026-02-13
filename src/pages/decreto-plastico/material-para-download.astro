@@ -1,0 +1,1754 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'White Paper ESG - Logística Reversa de Plásticos | Auíri';
+const description = 'Decreto 12.688/2025: Como transformar compliance em vantagem competitiva. Guia completo para a indústria alimentícia brasileira.';
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    :root {
+      --auiri-primary: #5499a3;
+      --auiri-button: #eaab75;
+      --auiri-bg: #3d616f;
+      --auiri-accent: #07f2ea;
+      --auiri-dark: #2a4450;
+      --auiri-light: #f8f9fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #ffffff;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--auiri-bg) 0%, var(--auiri-dark) 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,100 600,50 T1200,0" fill="rgba(7,242,234,0.1)"/></svg>') repeat-x;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin: 0 auto 2rem;
+      filter: brightness(0) invert(1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--auiri-accent);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .section-alt {
+      background: #f8f9fa;
+    }
+
+    .section-highlight {
+      background: var(--auiri-bg);
+      color: white;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--auiri-primary);
+    }
+
+    .section-highlight h2 {
+      color: white;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: var(--auiri-primary);
+    }
+
+    .section-highlight h3 {
+      color: var(--auiri-accent);
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .callout {
+      background: var(--auiri-light);
+      border-left: 4px solid var(--auiri-accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .callout-warning {
+      background: #fff3cd;
+      border-left-color: #ffc107;
+    }
+
+    .callout-danger {
+      background: #f7d7da;
+      border-left-color: #dc3545;
+      color: #3a3a3a;
+    }
+
+    .callout-success {
+      background: #d4edda;
+      border-left-color: #28a745;
+      color: #333;
+    }
+
+    .callout-icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--auiri-accent);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--auiri-accent);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 20px;
+      bottom: -2.5rem;
+      width: 2px;
+      background: var(--auiri-accent);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--auiri-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .section-highlight .timeline-content {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: var(--auiri-primary);
+      color: white;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tbody tr:hover {
+      background: #f8f9fa;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check-mark {
+      color: #28a745;
+      font-weight: 700;
+    }
+
+    .x-mark {
+      color: #dc3545;
+      font-weight: 700;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--auiri-accent);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: var(--auiri-primary);
+    }
+
+    .feature-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-metric {
+      font-weight: 700;
+      color: var(--auiri-accent);
+      font-size: 1.1rem;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .company-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--auiri-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .company-investment {
+      color: var(--auiri-accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .company-results {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .company-results li {
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-container {
+      display: grid;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .phase-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-left: 6px solid var(--auiri-accent);
+      color: #333;
+    }
+
+    .phase-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--auiri-accent);
+      color: var(--auiri-dark);
+      font-weight: 700;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .phase-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--auiri-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .phase-items {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .phase-items li {
+      padding: 0.75rem 0 0.75rem 2rem;
+      position: relative;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .phase-items li:last-child {
+      border-bottom: none;
+    }
+
+    .phase-items li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--auiri-accent);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .kpi-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .kpi-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .kpi-category {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--auiri-primary);
+      margin-bottom: 1rem;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--auiri-button) 0%, #d89860 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .cta-section h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1.25rem 3rem;
+      background: white;
+      color: var(--auiri-bg);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background: var(--auiri-accent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-item {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      display: block;
+      text-align: center;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      background: var(--auiri-dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      max-width: 180px;
+      margin: 0 auto 1.5rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      margin: 1.5rem 0;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 1;
+    }
+
+    .footer-copyright {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quote-block {
+      background: rgba(7, 242, 234, 0.1);
+      border-left: 4px solid var(--auiri-accent);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      font-style: italic;
+    }
+
+    .quote-text {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .quote-author {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--auiri-primary);
+    }
+
+    .benefit-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .benefit-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .benefit-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--auiri-accent);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-label {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .international-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .country-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .country-flag {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .country-name {
+      font-weight: 700;
+      color: var(--auiri-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .country-system {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .country-stats {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .country-stats li {
+      padding: 0.5rem 0;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .company-grid,
+      .kpi-grid,
+      .benefit-highlight,
+      .international-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 2rem 1rem;
+      }
+
+      .cta-section h2 {
+        font-size: 1.75rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--auiri-bg) 0%, var(--auiri-dark) 100%);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fixed-header-button {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: white;
+      color: var(--auiri-bg);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .fixed-header-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background: var(--auiri-accent);
+    }
+
+    body.has-fixed-header {
+      padding-top: 70px;
+    }
+
+    @media print {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        padding-top: 0 !important;
+        background: white;
+        color: #333;
+      }
+
+      .fixed-header {
+        display: none !important;
+      }
+
+      .hero-section {
+        background: white;
+        color: #333;
+        padding: 2rem 0;
+        page-break-after: always;
+      }
+
+      .hero-section::before {
+        display: none !important;
+      }
+
+      h1 {
+        color: #333;
+        font-size: 2rem;
+      }
+
+      h2 {
+        color: var(--auiri-primary);
+        page-break-after: avoid;
+      }
+
+      h3 {
+        color: var(--auiri-primary);
+        page-break-after: avoid;
+      }
+
+      .subtitle {
+        color: #333;
+      }
+
+      p {
+        color: #333;
+        orphans: 3;
+        widows: 3;
+        page-break-inside: avoid;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+        page-break-inside: avoid;
+      }
+
+      .stat-card {
+        background: white;
+        border: 2px solid var(--auiri-primary);
+        padding: 1rem;
+        text-align: center;
+        page-break-inside: avoid;
+      }
+
+      .stat-number {
+        color: var(--auiri-primary);
+      }
+
+      .section {
+        background: white !important;
+        color: #333;
+        page-break-inside: avoid;
+        margin: 2rem 0;
+      }
+
+      .section-highlight {
+        background: white !important;
+        color: #333;
+        border-left: 6px solid var(--auiri-primary);
+        padding-left: 1.5rem;
+      }
+
+      .section-highlight h2 {
+        color: var(--auiri-primary);
+      }
+
+      .callout {
+        background: #f9f9f9;
+        border: 2px solid var(--auiri-primary);
+        page-break-inside: avoid;
+        margin: 1.5rem 0;
+      }
+
+      .callout-danger {
+        background: white;
+        border: 2px solid #dc3545;
+        color: #333;
+      }
+
+      .callout-success {
+        background: white;
+        border: 2px solid #28a745;
+        color: #333;
+      }
+
+      .callout-warning {
+        background: white;
+        border: 2px solid #ffc107;
+        color: #333;
+      }
+
+      .phase-card {
+        background: white;
+        border: 2px solid var(--auiri-primary);
+        page-break-inside: avoid;
+        margin: 1rem 0;
+      }
+
+      .phase-badge {
+        background: #f0f0f0;
+        color: var(--auiri-primary);
+      }
+
+      .phase-title {
+        color: var(--auiri-primary);
+      }
+
+      table {
+        page-break-inside: avoid;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: left;
+        color: #333;
+      }
+
+      th {
+        background: #f9f9f9;
+        color: var(--auiri-primary);
+        font-weight: 700;
+      }
+
+      ul, ol {
+        margin: 1rem 0;
+        color: #333;
+      }
+
+      li {
+        margin: 0.5rem 0;
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: var(--auiri-primary);
+        text-decoration: underline;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        page-break-inside: avoid;
+      }
+
+      .logo {
+        filter: none;
+        max-width: 150px;
+      }
+
+      @page {
+        size: A4;
+        margin: 1.5cm;
+      }
+
+      @page :first {
+        margin-top: 1cm;
+      }
+    }
+  </style>
+
+  <!-- Fixed Download Header -->
+  <header class="fixed-header">
+    <button class="fixed-header-button" onclick="window.print()">
+      📥 Baixar White Paper em PDF
+    </button>
+  </header>
+
+  <script>
+    // Adiciona padding ao body para compensar a header fixa
+    document.body.classList.add('has-fixed-header');
+  </script>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <img 
+        src="https://auiri.com.br/wp-content/uploads/2023/05/logo-auiri-inovacao-para-impacto.svg" 
+        alt="Auíri - Inovação para Impacto" 
+        class="logo"
+      />
+      
+      <h1>White Paper ESG</h1>
+      <p class="subtitle">
+        Logística Reversa de Plásticos Além do Compliance<br>
+        Como o Decreto 12.688/2025 está criando a maior oportunidade ESG da década para a indústria alimentícia brasileira
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">50%</span>
+          <span class="stat-label">Meta 2040</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">32%</span>
+          <span class="stat-label">Meta 2026</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">87%</span>
+          <span class="stat-label">Preferem Sustentável</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">82%</span>
+          <span class="stat-label">Pagam Mais</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">24,4%</span>
+          <span class="stat-label">Taxa Atual</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sumário Executivo -->
+  <section class="section">
+    <div class="container">
+      <h2>📑 Sumário Executivo</h2>
+      <p>
+        O Decreto 12.688/2025 estabelece o marco regulatório mais ambicioso da história brasileira para logística reversa de plásticos. Com metas obrigatórias de recuperação iniciando em 32% (2026) e chegando a 50% (2040), as empresas enfrentam penalidades de até R$ 50 milhões e proibição de contratar com o poder público.
+      </p>
+      <p>
+        Mas esta transformação regulatória esconde uma oportunidade estratégica sem precedentes. 87% dos brasileiros preferem marcas sustentáveis e 82% estão dispostos a pagar premium por embalagens ecológicas. Empresas líderes como Coca-Cola, Nestlé e Unilever já demonstram que sustentabilidade gera vantagem competitiva mensurável.
+      </p>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">O Que Isso Significa Para Seu Negócio</span>
+        <p>
+          R$ 14 bilhões desperdiçados anualmente em materiais recicláveis representam oportunidade de reduzir custos operacionais em até 40% e criar novas linhas de receita. Empresas que implementarem agora terão vantagem competitiva de 2-3 anos sobre concorrentes.
+        </p>
+      </div>
+
+      <div class="benefit-highlight">
+        <div class="benefit-item">
+          <span class="benefit-value">901k</span>
+          <span class="benefit-label">Toneladas de embalagens plásticas flexíveis/ano</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">R$ 50mi</span>
+          <span class="benefit-label">Multas potenciais</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">18,98%</span>
+          <span class="benefit-label">Participação no mercado brasileiro de plásticos</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">17,3%</span>
+          <span class="benefit-label">Crescimento anual de investimentos ESG</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impacto na Reputação -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>🌍 Impacto na Reputação da Sua Marca</h2>
+      <p>
+        Marcas com certificação ESG têm valorização 23% maior em bolsa e captam investimentos com taxas 2-3% menores que concorrentes.
+      </p>
+      <p>
+        Consumidores millennials e Gen Z (45% do mercado até 2030) boicotam ativamente marcas sem compromisso ambiental.
+      </p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <span class="callout-title">Sua Marca no Radar dos Stakeholders</span>
+        <p>
+          ONGs, mídia e ativistas já mapeiam empresas sem planos de sustentabilidade. Escândalos ambientais geram perdas médias de 30% no valor de mercado.
+        </p>
+        <p>
+          <strong>Caso Volkswagen Dieselgate:</strong> US$ 33 bilhões em multas e recalls. Prevenção teria custado fração do valor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marco Regulatório -->
+  <section class="section section-highlight">
+    <div class="container">
+      <h2>O Novo Marco Regulatório Brasileiro</h2>
+      <p>
+        O Decreto 12.688/2025 representa a transformação mais profunda na gestão de resíduos plásticos do Brasil. Publicado em outubro de 2025, estabelece pela primeira vez metas quantitativas obrigatórias exclusivas para plásticos, criando sistema nacional de logística reversa com enforcement rigoroso.
+      </p>
+
+      <div class="callout callout-danger">
+        <span class="callout-icon">⚠️</span>
+        <span class="callout-title">Risco Imediato para Sua Empresa</span>
+        <p>
+          Janeiro de 2026 está a menos de 12 meses. Empresas sem sistema de logística reversa implementado enfrentarão multas imediatas, suspensão de atividades e proibição de participar de licitações públicas. O tempo de implementação médio é de 6-9 meses.
+        </p>
+      </div>
+
+      <h3>Cronograma de Implementação</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Janeiro 2026</div>
+          <div class="timeline-content">
+            <strong>Início da Obrigatoriedade</strong>
+            <p>32% de recuperação | 22% conteúdo reciclado</p>
+            <p>Grandes empresas devem estar operacionais</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Julho 2026</div>
+          <div class="timeline-content">
+            <strong>Expansão para PMEs</strong>
+            <p>Pequenas e médias empresas iniciam implementação</p>
+            <p>Sistema de certificação operacional</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2030</div>
+          <div class="timeline-content">
+            <strong>Metas Intermediárias</strong>
+            <p>38% de recuperação | 28% conteúdo reciclado</p>
+            <p>Infraestrutura nacional consolidada</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2035</div>
+          <div class="timeline-content">
+            <strong>Aceleração do Sistema</strong>
+            <p>44% de recuperação | 34% conteúdo reciclado</p>
+            <p>Integração completa da cadeia</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2040</div>
+          <div class="timeline-content">
+            <strong>Meta Final</strong>
+            <p>50% de recuperação | 40% conteúdo reciclado</p>
+            <p>Economia circular estabelecida</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Isenção Crítica -->
+  <section class="section">
+    <div class="container">
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <span class="callout-title">Isenção Crítica para Indústria Alimentícia</span>
+        <p>
+          A indústria alimentícia recebeu isenção das metas de conteúdo reciclado devido às restrições sanitárias da ANVISA. Atualmente, apenas PET-PCR possui aprovação para contato direto com alimentos após processo validado.
+        </p>
+        <p><strong>Mas a isenção NÃO elimina responsabilidades:</strong></p>
+        <ul style="margin-top: 1rem; padding-left: 2rem;">
+          <li>Implementar sistema completo de logística reversa</li>
+          <li>Cumprir metas progressivas de recuperação (32% a 50%)</li>
+          <li>Desenvolver programas de educação ambiental</li>
+          <li>Priorizar cooperativas de catadores</li>
+          <li>Reportar anualmente ao SINIR até 30 de julho</li>
+          <li>Dar destinação adequada aos rejeitos</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">Transforme Obrigação em Oportunidade</span>
+        <p>
+          Empresas que implementarem sistemas robustos agora poderão vender créditos de logística reversa para concorrentes atrasados, criando nova fonte de receita recorrente estimada em R$ 500-2.000 por tonelada processada acima da meta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Magnitude do Desafio -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Magnitude do Desafio</h2>
+      <p>
+        A indústria alimentícia brasileira representa 10,8% do PIB nacional, empregando 2,075 milhões de pessoas diretamente em 41 mil empresas. Este setor massivo processa 283 milhões de toneladas de alimentos anualmente, consumindo aproximadamente 1,8 milhão de toneladas de plásticos - 24% do mercado nacional.
+      </p>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">Custo da Inação vs. Investimento Inteligente</span>
+        <p>
+          Multas potenciais de R$ 50 milhões equivalem a 10-50x o investimento necessário para implementar sistema completo de logística reversa. ROI médio de 15-25% em 2-4 anos transforma compliance em centro de lucro.
+        </p>
+      </div>
+
+      <h3>Panorama Atual da Reciclagem</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo de Resina</th>
+            <th>Participação</th>
+            <th>Volume (mil ton)</th>
+            <th>Taxa de Reciclagem</th>
+            <th>Status ANVISA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PET</td>
+            <td>39%</td>
+            <td>397</td>
+            <td>46,2%</td>
+            <td><span class="check-mark">✅ Aprovado</span></td>
+          </tr>
+          <tr>
+            <td>PEAD</td>
+            <td>20%</td>
+            <td>204</td>
+            <td>29,2%</td>
+            <td><span class="x-mark">❌ Não aprovado</span></td>
+          </tr>
+          <tr>
+            <td>PP</td>
+            <td>18%</td>
+            <td>179</td>
+            <td>17,2%</td>
+            <td><span class="x-mark">❌ Não aprovado</span></td>
+          </tr>
+          <tr>
+            <td>PEBD/PELBD</td>
+            <td>15%</td>
+            <td>152</td>
+            <td>9,6%</td>
+            <td><span class="x-mark">❌ Não aprovado</span></td>
+          </tr>
+          <tr>
+            <td>Flexíveis</td>
+            <td>8%</td>
+            <td>80</td>
+            <td>&lt;5%</td>
+            <td><span class="x-mark">❌ Complexidade técnica</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Tecnologias e Inovações -->
+  <section class="section">
+    <div class="container">
+      <h2>Tecnologias e Inovações Disponíveis</h2>
+      <p>
+        O espectro tecnológico para logística reversa evoluiu dramaticamente nos últimos anos, oferecendo soluções desde reciclagem mecânica tradicional até sistemas avançados de reciclagem química e rastreamento digital.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-icon">⚙️</span>
+          <div class="feature-title">Reciclagem Mecânica</div>
+          <p class="feature-description">USD 50-200/ton</p>
+          <p class="feature-description">90% economia energética</p>
+          <p class="feature-metric">Payback: 2-4 anos | IRR: 15-25%</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🧪</span>
+          <div class="feature-title">Reciclagem Química</div>
+          <p class="feature-description">USD 300-1.000/ton</p>
+          <p class="feature-description">Reciclagem infinita</p>
+          <p class="feature-metric">Payback: 5-8 anos | IRR: 20-25%</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔗</span>
+          <div class="feature-title">Blockchain</div>
+          <p class="feature-description">ROI: 12-24 meses</p>
+          <p class="feature-description">Certificados imutáveis</p>
+          <p class="feature-metric">Smart contracts | Anti-greenwashing</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🛰️</span>
+          <div class="feature-title">IoT & Sensores</div>
+          <p class="feature-description">-35% custos logísticos</p>
+          <p class="feature-description">Otimização rotas</p>
+          <p class="feature-metric">Detecção contaminação | Monitoramento real-time</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🧠</span>
+          <div class="feature-title">AI & Machine Learning</div>
+          <p class="feature-description">+40% pureza material</p>
+          <p class="feature-description">-50% custos mão de obra</p>
+          <p class="feature-metric">Triagem automatizada | Predição demanda</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔥</span>
+          <div class="feature-title">Pirólise Avançada</div>
+          <p class="feature-description">Processa multicamadas</p>
+          <p class="feature-description">Retorno a feedstock</p>
+          <p class="feature-metric">ANVISA aprova processo | Qualidade virgem</p>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">Tecnologia Como Diferencial Competitivo</span>
+        <p>
+          Empresas com rastreamento blockchain conquistam contratos premium com varejistas europeus e americanos que exigem transparência total da cadeia. Premium de preço de 10-30% para produtos com certificação digital de sustentabilidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Análise de Investimento -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Análise de Investimento e Retorno</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Porte</th>
+            <th>Volume (ton/ano)</th>
+            <th>Investimento Inicial</th>
+            <th>Custo Operacional</th>
+            <th>Payback</th>
+            <th>Estratégia Recomendada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pequena</td>
+            <td>Até 500</td>
+            <td>USD 10-50 mil</td>
+            <td>USD 20-100 mil/ano</td>
+            <td>2-3 anos</td>
+            <td>Sistema coletivo</td>
+          </tr>
+          <tr>
+            <td>Média</td>
+            <td>500-5.000</td>
+            <td>USD 300 mil-1,5 mi</td>
+            <td>USD 200-800 mil/ano</td>
+            <td>3-5 anos</td>
+            <td>Híbrido/Consórcios</td>
+          </tr>
+          <tr>
+            <td>Grande</td>
+            <td>&gt;5.000</td>
+            <td>USD 2-50 milhões</td>
+            <td>Variável</td>
+            <td>2-8 anos</td>
+            <td>Sistema próprio integrado</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">Financiamento Verde Disponível Agora</span>
+        <p>
+          BNDES, Desenvolve SP e bancos privados oferecem linhas com juros 30-50% menores para projetos de economia circular. Janela de oportunidade se fecha em 2026 quando demanda explodirá. Antecipe-se e capture melhores condições.
+        </p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">
+          "A economia circular pode agregar 1% ao PIB brasileiro através de logística reversa. No setor alimentício, a redução de emissões pode chegar a 49% (5,6 bilhões ton CO2) até 2050."
+        </p>
+        <p class="quote-author">— FIA Business School & Ellen MacArthur Foundation</p>
+      </div>
+
+      <h3>Benefícios Quantificáveis</h3>
+      <div class="benefit-highlight">
+        <div class="benefit-item">
+          <span class="benefit-value">20-40%</span>
+          <span class="benefit-label">Economia em matéria-prima vs virgem</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">90%</span>
+          <span class="benefit-label">Redução no consumo energético</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">10-30%</span>
+          <span class="benefit-label">Premium pricing produtos sustentáveis</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">49%</span>
+          <span class="benefit-label">Redução potencial emissões GEE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Imperativo ESG -->
+  <section class="section">
+    <div class="container">
+      <h2>O Imperativo ESG Como Vantagem Competitiva</h2>
+      <p>
+        A sustentabilidade transcendeu o status de "nice to have" para tornar-se critério fundamental de decisão de compra, investimento e parceria. A convergência de pressões regulatórias, demanda do consumidor e exigências de investidores cria momento único para early movers.
+      </p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">🌍</span>
+        <span class="callout-title">O Poder da Percepção Pública</span>
+        <p>
+          73% dos consumidores compartilham experiências positivas com marcas sustentáveis. 93% compartilham experiências negativas com marcas poluidoras.
+        </p>
+        <p><strong>Viralização negativa pode destruir décadas de construção de marca em dias</strong></p>
+      </div>
+
+      <h3>A Voz do Consumidor Brasileiro</h3>
+      <div class="benefit-highlight">
+        <div class="benefit-item">
+          <span class="benefit-value">87%</span>
+          <span class="benefit-label">Preferem marcas com propósito sustentável</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">82%</span>
+          <span class="benefit-label">Pagam mais por embalagens ecológicas</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">90%</span>
+          <span class="benefit-label">Gen Z disposta a pagar premium verde</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-value">71%</span>
+          <span class="benefit-label">Decisão baseada em sustentabilidade</span>
+        </div>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-icon">⚠️</span>
+        <span class="callout-title">Caso BRF 2017: O Custo Catastrófico da Negligência</span>
+        <p>
+          Perda de 80% do valor de mercado (R$ 15 bilhões) | 20 países suspenderam importações | Recuperação ainda incompleta após 7 anos | Investimento preventivo teria custado 0,1% das perdas
+        </p>
+      </div>
+
+      <h3>Pressão de Investidores e Mercado Financeiro</h3>
+      <div class="callout callout-success">
+        <span class="callout-icon">🌍</span>
+        <span class="callout-title">Oportunidades de Financiamento Verde</span>
+        <ul style="margin-top: 1rem; padding-left: 2rem;">
+          <li>US$ 728,7 milhões em investimentos ESG no Brasil (2024)</li>
+          <li>US$ 1,8 bilhões projetados até 2030 (CAGR 17,3%)</li>
+          <li>Taxas preferenciais para empresas com rating ESG</li>
+          <li>Acesso a green bonds e financiamento sustentável</li>
+          <li>Listagem em Índices ESG (S&P/B3 Brasil ESG)</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">ESG Como Moeda de Acesso a Mercados</span>
+        <p>
+          União Europeia exigirá certificação de sustentabilidade para todas importações até 2027. Sem conformidade ESG comprovada, empresas brasileiras perderão acesso ao mercado de €15 trilhões. Preparação deve começar agora.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmarking Internacional -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Benchmarking Internacional</h2>
+      <p>
+        A análise de casos globais revela padrões claros de sucesso e oferece roadmap comprovado para implementação eficaz no contexto brasileiro.
+      </p>
+
+      <h3>Melhores Práticas Globais</h3>
+      <div class="international-grid">
+        <div class="country-card">
+          <span class="country-flag">🇩🇪</span>
+          <div class="country-name">Alemanha - Pfand</div>
+          <p class="country-system">Sistema de depósito €0,25</p>
+          <ul class="country-stats">
+            <li>98% taxa de retorno</li>
+            <li>Líder mundial absoluto</li>
+            <li>100% PET ciclo fechado</li>
+          </ul>
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇫🇷</span>
+          <div class="country-name">França - AGEC</div>
+          <p class="country-system">Lei Anti-desperdício</p>
+          <ul class="country-stats">
+            <li>100% reciclável 2025</li>
+            <li>Eliminação plástico único 2040</li>
+            <li>Logo Triman obrigatório</li>
+            <li>€300k multas</li>
+          </ul>
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇪🇺</span>
+          <div class="country-name">União Europeia</div>
+          <p class="country-system">EPR harmonizado</p>
+          <ul class="country-stats">
+            <li>50% PET reciclado 2040</li>
+            <li>100% economicamente reciclável 2030</li>
+            <li>Proibição PFAS</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Cases de Sucesso Empresarial</h3>
+      <div class="company-grid">
+        <div class="company-card">
+          <div class="company-name">Coca-Cola</div>
+          <span class="company-investment">Investimento: US$ 2 bilhões</span>
+          <ul class="company-results">
+            <li>99% reciclabilidade</li>
+            <li>28% conteúdo reciclado</li>
+            <li>18,5g garrafas (-31%)</li>
+            <li><strong>Lição:</strong> Escala global viabiliza investimento</li>
+          </ul>
+        </div>
+
+        <div class="company-card">
+          <div class="company-name">Nestlé</div>
+          <span class="company-investment">Investimento: US$ 1,3 bilhão</span>
+          <ul class="company-results">
+            <li>8.000+ catadores Brasil</li>
+            <li>-14,9% plástico virgem</li>
+            <li>200k ton reduzidas</li>
+            <li><strong>Lição:</strong> Inclusão social + circularidade</li>
+          </ul>
+        </div>
+
+        <div class="company-card">
+          <div class="company-name">Unilever</div>
+          <span class="company-investment">Investimento: US$ 1 bilhão</span>
+          <ul class="company-results">
+            <li>1.000+ estações refil</li>
+            <li>OMO -72% plástico</li>
+            <li>1.500 ton removidas</li>
+            <li><strong>Lição:</strong> Concentração = inovação</li>
+          </ul>
+        </div>
+
+        <div class="company-card">
+          <div class="company-name">Danone</div>
+          <span class="company-investment">Investimento: US$ 800 milhões</span>
+          <ul class="company-results">
+            <li>100% rPET USA</li>
+            <li>96,3% retorno Alemanha</li>
+            <li>50% reutilizáveis</li>
+            <li><strong>Lição:</strong> Metas ambiciosas atraem consumidor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">💡</span>
+        <span class="callout-title">Aprenda Com Quem Já Fez</span>
+        <p>
+          Empresas que copiaram modelos testados economizam 40% do tempo e 60% dos custos de implementação. Não reinvente a roda - adapte best practices globais à realidade brasileira com suporte de consultoria especializada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Estratégico -->
+  <section class="section section-highlight">
+    <div class="container">
+      <h2>Roadmap Estratégico de Implementação</h2>
+
+      <div class="phase-container">
+        <div class="phase-card">
+          <span class="phase-badge">🏁 Fase 1: Emergencial (0-6 meses)</span>
+          <div class="phase-title">Conformidade Mínima Viável</div>
+          <ul class="phase-items">
+            <li>Diagnóstico urgente de gaps regulatórios</li>
+            <li>Contratação de sistema coletivo temporário</li>
+            <li>Registro no SINIR e documentação básica</li>
+            <li>Treinamento emergencial de equipe</li>
+            <li>Comunicação preventiva com stakeholders</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-badge">📈 Fase 2: Estruturação (6-18 meses)</span>
+          <div class="phase-title">Sistema Robusto e Diferenciação</div>
+          <ul class="phase-items">
+            <li>Implementação de tecnologia própria</li>
+            <li>Parcerias estratégicas com cooperativas</li>
+            <li>Redesenho de 30%+ do portfólio</li>
+            <li>Certificações iniciais e auditoria</li>
+            <li>Lançamento de linha sustentável piloto</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-badge">🏆 Fase 3: Liderança (18-36 meses)</span>
+          <div class="phase-title">Vantagem Competitiva Sustentável</div>
+          <ul class="phase-items">
+            <li>100% portfólio circular-ready</li>
+            <li>Monetização de créditos de carbono</li>
+            <li>Exportação com certificação premium</li>
+            <li>Liderança em iniciativas setoriais</li>
+            <li>Caso de sucesso internacional</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">🌍</span>
+        <span class="callout-title">Transforme Sua Empresa em Caso de Sucesso</span>
+        <p>
+          Empresas reconhecidas como líderes ESG recebem cobertura gratuita da mídia equivalente a R$ 10-50 milhões em publicidade por ano.
+        </p>
+        <p>
+          <strong>Natura:</strong> 11 anos consecutivos como #1 em sustentabilidade = valorização de 400% em 10 anos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs Críticos -->
+  <section class="section">
+    <div class="container">
+      <h2>KPIs Críticos de Sucesso</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-icon">📑</span>
+          <div class="kpi-category">Operacionais</div>
+          <ul class="kpi-list">
+            <li>Taxa de recuperação</li>
+            <li>% conteúdo reciclado</li>
+            <li>Resíduos desviados aterros</li>
+            <li>Eficiência coleta</li>
+          </ul>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-icon">💰</span>
+          <div class="kpi-category">Financeiros</div>
+          <ul class="kpi-list">
+            <li>ROI sustentabilidade</li>
+            <li>Economia matéria-prima</li>
+            <li>Receita produtos circulares</li>
+            <li>Custo/ton processada</li>
+          </ul>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-icon">🌳</span>
+          <div class="kpi-category">Ambientais</div>
+          <ul class="kpi-list">
+            <li>Emissões GEE (Escopo 1,2,3)</li>
+            <li>Consumo água/energia</li>
+            <li>Pegada carbono produto</li>
+            <li>Biodiversidade</li>
+          </ul>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-icon">❤️</span>
+          <div class="kpi-category">Sociais & Reputação</div>
+          <ul class="kpi-list">
+            <li>NPS sustentabilidade</li>
+            <li>Menções positivas mídia</li>
+            <li>Engajamento redes sociais</li>
+            <li>Índice reputação ESG</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decisão Final -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>A Decisão Que Definirá o Futuro da Sua Empresa</h2>
+      <p>
+        O Decreto 12.688/2025 não é apenas uma regulação - é o divisor de águas entre empresas que prosperarão e as que desaparecerão na nova economia. Com menos de 12 meses para conformidade, cada dia de atraso representa risco exponencial e perda de oportunidade.
+      </p>
+
+      <div class="callout callout-danger">
+        <span class="callout-icon">⚠️</span>
+        <span class="callout-title">Cenário Se Você Não Agir</span>
+        <p>
+          Multas de até R$ 50 milhões | Suspensão de operações | Proibição de contratos públicos | Perda de clientes para concorrentes conformes | Exclusão de mercados internacionais | Danos irreversíveis à reputação | Desvalorização em bolsa
+        </p>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-icon">🌍</span>
+        <span class="callout-title">Cenário Se Você Agir Agora</span>
+        <ul style="margin-top: 1rem; padding-left: 2rem;">
+          <li>Redução de 20-40% em custos de matéria-prima</li>
+          <li>Acesso a financiamento com juros 30% menores</li>
+          <li>Premium de preço de 10-30% em produtos sustentáveis</li>
+          <li>Valorização de 23% em bolsa vs. concorrentes</li>
+          <li>Acesso garantido a mercados europeus e americanos</li>
+          <li>Posição de liderança no setor por 3-5 anos</li>
+        </ul>
+      </div>
+
+      <div style="text-align: center; margin: 3rem 0;">
+        <h3 style="font-size: 2rem; color: var(--auiri-primary); margin-bottom: 2rem;">
+          Janeiro 2026 Está Chegando.<br>Sua Empresa Está Pronta?
+        </h3>
+        <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto 2rem;">
+          A Auíri já estruturou roadmaps ESG vencedores para PepsiCo, Danone, Novelis, Braskem e outras gigantes.
+        </p>
+        <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto;">
+          Nossa Metodologia MAIS transforma o Decreto 12.688/2025 de ameaça existencial em vantagem competitiva duradoura.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2>CADA DIA CONTA.</h2>
+        <p>TRANSFORME COMPLIANCE EM LIDERANÇA.</p>
+        
+        <a 
+          href="https://wa.me/5511485889198?text=Olá!%20Gostaria%20de%20agendar%20uma%20consultoria%20estratégica%20sobre%20o%20Decreto%2012.688/2025" 
+          class="cta-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Falar com Especialista Agora via WhatsApp
+        </a>
+
+        <div class="contact-grid">
+          <a href="mailto:contato@auiri.com.br" class="contact-item">
+            📧 contato@auiri.com.br
+          </a>
+          <a href="tel:+551148589198" class="contact-item">
+            📞 (11) 4858-9198
+          </a>
+          <a href="https://www.auiri.com.br" class="contact-item" target="_blank" rel="noopener noreferrer">
+            🌐 www.auiri.com.br
+          </a>
+        </div>
+
+        <div class="quote-block" style="margin-top: 2rem; background: rgba(255,255,255,0.1); border-left-color: white;">
+          <p class="quote-text" style="color: white;">
+            "Em 2030, não existirão empresas neutras em sustentabilidade. Apenas líderes que abraçaram a transformação e seguidores tentando sobreviver. A escolha que você faz hoje determina em qual grupo estará."
+          </p>
+          <p class="quote-author" style="color: white;">
+            — Auíri: Transformando Compliance em Vantagem Competitiva
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <img 
+        src="https://auiri.com.br/wp-content/uploads/2023/05/logo-auiri-inovacao-para-impacto.svg" 
+        alt="Auíri" 
+        class="footer-logo"
+      />
+      <p class="footer-tagline">
+        INOVAÇÃO PARA IMPACTO<br>
+        Transformando desafios ESG em oportunidades de negócio desde 2019
+      </p>
+      
+      <div class="footer-links">
+        <a href="mailto:contato@auiri.com.br" class="footer-link">📧 contato@auiri.com.br</a>
+        <a href="tel:+551148589198" class="footer-link">📞 (11) 4858-9198</a>
+        <a href="https://www.auiri.com.br" class="footer-link" target="_blank" rel="noopener noreferrer">🌐 www.auiri.com.br</a>
+      </div>
+
+      <p class="footer-copyright">
+        © 2026 Auíri. Todos os direitos reservados. | Desenvolvido com propósito.
+      </p>
+    </div>
+  </footer>
+</BaseLayout>
