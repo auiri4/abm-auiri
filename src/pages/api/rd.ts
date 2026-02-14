@@ -48,11 +48,25 @@ export async function POST({ request }: { request: Request }) {
 
     if (!response.ok) {
       console.error('RD Station API Error Details:', result);
-      return new Response(JSON.stringify({ ok: false, error: "RD Station API Error", details: result }), {
+
+      // Extract specific error message from RD Station response if possible
+      let errorMessage = "RD Station API Error";
+      if (result.errors && result.errors.length > 0) {
+        errorMessage = result.errors[0].error_message || result.errors[0].error_type || errorMessage;
+      } else if (result.error_message) {
+        errorMessage = result.error_message;
+      }
+
+      return new Response(JSON.stringify({
+        ok: false,
+        error: errorMessage,
+        details: result
+      }), {
         status: response.status,
         headers: { "Content-Type": "application/json" }
       });
     }
+
 
 
     return new Response(JSON.stringify({ ok: true, result }), {
