@@ -1,7 +1,9 @@
 ---
 export const prerender = true;
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SqueezeForm from "../../components/react/SqueezeForm.tsx";
 ---
+
 
 
 <BaseLayout 
@@ -16,11 +18,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <div class="hero-content">
             <span class="label">WHITE PAPER ESG</span>
             <h1 class="hero-title">
-              <span class="title-teal">SQUEEZE PAGE FINAL FIX V1</span>
               <span class="title-teal">Logística Reversa de Plásticos</span>
-
               <span class="title-dark">Além do Compliance</span>
             </h1>
+
             <p class="hero-subtitle">
               Como o Decreto 12.688/2025 está criando a maior oportunidade ESG da década para a indústria alimentícia brasileira
             </p>
@@ -39,9 +40,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             <div class="form-card">
               <h2 class="form-title">Acesse o White Paper</h2>
               <p class="form-subtitle">Preencha os campos abaixo para baixar.</p>
-              <!-- <SqueezeForm client:only="react" /> -->
-              <p>Formulário temporariamente em manutenção.</p>
+              <SqueezeForm client:only="react" />
             </div>
+
 
 
         </div>
