@@ -5,9 +5,10 @@ export async function POST({ request }: { request: Request }) {
     const data = await request.json();
 
     // RD Station API Configuration
-    // Use import.meta.env for Astro server-side environments
-    const PUBLIC_TOKEN = (import.meta.env.RD_STATION_PUBLIC_TOKEN) || "622cae42d95f4d8cfa49f08ce0b1451a";
+    // For server-side calls to api.rd.services, use the Private Token (API Key)
+    const PRIVATE_TOKEN = (import.meta.env.RD_STATION_PRIVATE_TOKEN) || "1eda080a62e086732d7a51c95e79b109";
     const IDENTIFIER = (import.meta.env.RD_STATION_IDENTIFIER) || "decreto-plastico-whitepaper";
+
 
     const rdPayload = {
       event_type: "CONVERSION",
@@ -24,7 +25,8 @@ export async function POST({ request }: { request: Request }) {
 
     console.log('RD Station Payload:', JSON.stringify(rdPayload, null, 2));
 
-    const response = await fetch(`https://api.rd.services/platform/conversions?api_key=${PUBLIC_TOKEN}`, {
+    const response = await fetch(`https://api.rd.services/platform/conversions?api_key=${PRIVATE_TOKEN}`, {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
