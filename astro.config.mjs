@@ -3,10 +3,11 @@ import vercel from "@astrojs/vercel";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  output: "static",
+  output: "server",
   adapter: vercel(),
   integrations: [react()],
 });
+
 
 
 
