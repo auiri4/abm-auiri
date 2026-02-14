@@ -24,7 +24,7 @@ export async function POST({ request }: { request: Request }) {
 
     console.log('RD Station Payload:', JSON.stringify(rdPayload, null, 2));
 
-    const response = await fetch(`https://api.rdstation.com.br/platform/conversions?api_key=${PUBLIC_TOKEN}`, {
+    const response = await fetch(`https://api.rd.services/platform/conversions?api_key=${PUBLIC_TOKEN}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,6 +32,7 @@ export async function POST({ request }: { request: Request }) {
       },
       body: JSON.stringify(rdPayload),
     });
+
 
     const responseBody = await response.text();
     console.log('RD Station Raw Response:', responseBody);
