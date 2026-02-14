@@ -44,14 +44,16 @@ export default function SqueezeForm() {
       });
 
       if (!response.ok) {
-        throw new Error('Erro ao enviar formulário');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Erro ao enviar formulário');
       }
 
       // Redirecionar para a página de download
       window.location.href = '/decreto-plastico/material-para-download';
-    } catch (err) {
-      setError('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+    } catch (err: any) {
+      setError(err.message || 'Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
       setIsSubmitting(false);
+
     }
   };
 

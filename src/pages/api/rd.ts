@@ -5,8 +5,9 @@ export async function POST({ request }: { request: Request }) {
     const data = await request.json();
 
     // RD Station API Configuration
-    const PUBLIC_TOKEN = process.env.RD_STATION_PUBLIC_TOKEN || "622cae42d95f4d8cfa49f08ce0b1451a";
-    const IDENTIFIER = process.env.RD_STATION_IDENTIFIER || "decreto-plastico-whitepaper";
+    // Use import.meta.env for Astro server-side environments
+    const PUBLIC_TOKEN = (import.meta.env.RD_STATION_PUBLIC_TOKEN) || "622cae42d95f4d8cfa49f08ce0b1451a";
+    const IDENTIFIER = (import.meta.env.RD_STATION_IDENTIFIER) || "decreto-plastico-whitepaper";
 
     const rdPayload = {
       event_type: "CONVERSION",
@@ -21,6 +22,8 @@ export async function POST({ request }: { request: Request }) {
       }
     };
 
+    console.log('RD Station Payload:', JSON.stringify(rdPayload, null, 2));
+
     const response = await fetch(`https://api.rdstation.com.br/platform/conversions?api_key=${PUBLIC_TOKEN}`, {
       method: 'POST',
       headers: {
@@ -30,15 +33,24 @@ export async function POST({ request }: { request: Request }) {
       body: JSON.stringify(rdPayload),
     });
 
-    const result = await response.json();
+    const responseBody = await response.text();
+    console.log('RD Station Raw Response:', responseBody);
+
+    let result;
+    try {
+      result = JSON.parse(responseBody);
+    } catch (e) {
+      result = { raw: responseBody };
+    }
 
     if (!response.ok) {
-      console.error('RD Station Error:', result);
-      return new Response(JSON.stringify({ ok: false, error: "RD Station API Error" }), {
+      console.error('RD Station API Error Details:', result);
+      return new Response(JSON.stringify({ ok: false, error: "RD Station API Error", details: result }), {
         status: response.status,
         headers: { "Content-Type": "application/json" }
       });
     }
+
 
     return new Response(JSON.stringify({ ok: true, result }), {
       status: 200,
@@ -46,7 +58,7 @@ export async function POST({ request }: { request: Request }) {
     });
   } catch (err) {
     console.error('API Error:', err);
-    return new Response(JSON.stringify({ ok: false, error: "Internal Server Error" }), {
+    return new Response(JSON.stringify({ ok: false, error: "Internal Server Error", message: err instanceof Error ? err.message : String(err) }), {
       status: 500,
       headers: { "Content-Type": "application/json" }
     });
